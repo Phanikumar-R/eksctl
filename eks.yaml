@@ -15,6 +15,24 @@
 #   desiredCapacity: 2
 
 # spot-cluster.yaml
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
+
+# metadata:
+#   name: roboshop
+#   region: us-east-1
+
+# managedNodeGroups:
+#   - name: spot
+#     instanceTypes:
+#       - t3.small
+#       - t3a.small
+#       - t2.small
+#     spot: true
+#     desiredCapacity: 0
+
+# for downscaling nodes
+
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
@@ -29,4 +47,6 @@ managedNodeGroups:
       - t3a.small
       - t2.small
     spot: true
-    desiredCapacity: 0
+    minSize: 0
+    desiredCapacity: 2
+    maxSize: 2
